@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>W1 Ski Lounge – die Hütte an der Piste</title>
+  <link rel="stylesheet" href="fonts.css" />
+  <meta name="description" content="W1 Ski Lounge an den Ehrwalder Wettersteinbahnen: Tiroler Hüttenküche direkt an der Piste. In der Wintersaison täglich 10–17 Uhr. Reservierung unter +43 664 2204477." />
+  <meta name="theme-color" content="#2a1a12" />
+  <link rel="canonical" href="https://w1-ehrwald.at/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://w1-ehrwald.at/" />
+  <meta property="og:title" content="W1 Ski Lounge – die Hütte an der Piste" />
+  <meta property="og:description" content="Tiroler Hüttenküche direkt an der Piste der Ehrwalder Wettersteinbahnen. Reservierung: +43 664 2204477." />
+  <meta property="og:image" content="https://w1-ehrwald.at/img/huette-piste.jpg" />
+
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --snow:   #fbfaf7;
+      --paper:  #ffffff;
+      --ink:    #2a1a12;
+      --ink-2:  #5e4a3e;
+      --wood:   #b9773f;
+      --wood-l: #ead9c6;
+      --rule:   #e4d9ce;
+      --red:    #b3261e;
+      --red-d:  #8e1c16;
+      --night:  #14213d;
+
+      --serif: 'Young Serif', Georgia, serif;
+      --sans:  'Figtree', system-ui, sans-serif;
+
+      --gutter: clamp(20px, 5vw, 64px);
+      --max: 1240px;
+      --nav-h: 72px;
+      --facts-h: 98px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    body {
+      font-family: var(--sans);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--snow);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--wood-l); color: var(--ink); }
+    :focus-visible { outline: 3px solid var(--wood); outline-offset: 3px; border-radius: 2px; }
+    html { scrollbar-color: var(--wood) var(--snow); }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.08; text-wrap: balance; }
+    h2 { font-size: clamp(2rem, 4.4vw, 3.25rem); letter-spacing: -0.01em; }
+    h3 { font-size: 1.35rem; }
+
+    .one { font-family: "Arvo", var(--serif); font-weight: 700; letter-spacing: -0.02em; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 26px;
+      font: 600 1rem/1 var(--sans);
+      text-decoration: none; border-radius: 4px;
+      transition: background-color .2s, color .2s, box-shadow .2s, transform .2s var(--ease);
+    }
+    .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .btn:active { transform: translateY(1px); }
+    .btn-red { background: var(--red); color: #fff; box-shadow: 0 6px 16px -8px rgba(20, 12, 8, .55); }
+    .btn-red:hover { background: var(--red-d); }
+    .btn-light { background: rgba(255,255,255,.94); color: var(--ink); }
+    .btn-light:hover { background: #fff; }
+    .btn-line { border: 1.5px solid var(--ink); color: var(--ink); }
+    .btn-line:hover { background: var(--ink); color: var(--snow); }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      transition: background-color .3s, box-shadow .3s;
+    }
+    .nav .wrap { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .nav-logo { display: flex; align-items: center; background: #fff; border-radius: 4px; padding: 4px 8px; }
+    .nav-logo img { height: 46px; width: auto; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: #fff; text-decoration: none; font-weight: 500; font-size: .98rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,.35);
+    }
+    .nav-links a:hover { text-decoration: underline; }
+    .nav .btn { min-height: 44px; padding: 0 18px; font-size: .95rem; }
+    .nav.solid { background: var(--snow); box-shadow: 0 1px 0 var(--rule), 0 6px 20px -14px rgba(42,26,18,.35); }
+    .nav.solid .nav-links a { color: var(--ink); text-shadow: none; }
+    .nav.menu-open { background: var(--snow); }
+
+    .nav-toggle {
+      display: none; min-height: 44px; padding: 0 16px; border-radius: 4px;
+      font: 600 .95rem/1 var(--sans); cursor: pointer;
+      background: var(--snow); color: var(--ink); border: 1.5px solid var(--ink);
+    }
+    .nav-panel {
+      position: fixed; inset: var(--nav-h) 0 auto 0; z-index: 49;
+      background: var(--snow); box-shadow: 0 1px 0 var(--rule), 0 16px 30px -18px rgba(42,26,18,.4);
+    }
+    .nav-panel[hidden] { display: none; }
+    .nav-panel ul { list-style: none; padding: 8px var(--gutter) 16px; }
+    .nav-panel a { display: block; padding: 14px 0; border-bottom: 1px solid var(--rule); font-family: var(--serif); font-size: 1.35rem; text-decoration: none; }
+    .nav-panel li:last-child a { border-bottom: 0; }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative; min-height: calc(100svh - var(--facts-h));
+      display: flex; align-items: flex-end;
+      color: #fff; overflow: hidden; background: #3a3530;
+      padding-top: calc(var(--nav-h) + 32px);
+    }
+    .hero-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: 62% 40%;
+      animation: settle 2.4s var(--ease) both;
+    }
+    @keyframes settle { from { transform: scale(1.06); } to { transform: scale(1); } }
+    .hero::after {
+      content: ""; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to top, rgba(28,16,10,.82) 0%, rgba(28,16,10,.45) 32%, rgba(28,16,10,0) 60%),
+                  linear-gradient(to bottom, rgba(20,20,30,.35), rgba(20,20,30,0) 22%);
+    }
+    .hero-body { position: relative; z-index: 2; width: 100%; padding-bottom: clamp(40px, 8vh, 88px); }
+    .status {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 9px 14px 9px 12px; border-radius: 3px;
+      background: var(--ink); color: var(--snow);
+      font-weight: 600; font-size: .95rem; margin-bottom: 22px;
+    }
+    .status .dot { width: 10px; height: 10px; border-radius: 50%; background: #9aa3ab; }
+    .status.open .dot { background: #4ad07a; box-shadow: 0 0 0 4px rgba(74,208,122,.25); }
+    .hero h1 { font-size: clamp(3.2rem, 9.5vw, 6rem); letter-spacing: -0.02em; max-width: 11ch; }
+    .hero-claim { font-size: clamp(1.15rem, 2.2vw, 1.5rem); margin-top: 14px; color: rgba(255,255,255,.9); max-width: 34ch; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+    /* ── Fakten-Leiste ── */
+    .facts { background: var(--ink); color: var(--snow); }
+    .facts .wrap { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .fact { padding: 26px 28px 26px 0; display: flex; gap: 14px; align-items: flex-start; }
+    .fact + .fact { padding-left: 28px; border-left: 1px solid rgba(255,255,255,.14); }
+    .fact svg { width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; color: var(--wood); }
+    .fact strong { display: block; font-weight: 600; }
+    .fact span, .fact a { color: rgba(251,250,247,.75); font-size: .98rem; }
+    .fact a:hover { color: #fff; }
+
+    /* ── Sections ── */
+    section.block { padding: clamp(80px, 11vw, 140px) 0; }
+
+    .intro { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+    .intro-text p { margin-top: 22px; color: var(--ink-2); max-width: 52ch; font-size: 1.12rem; }
+    .intro-text p:first-of-type { margin-top: 26px; }
+    .intro-photos { display: grid; grid-template-columns: 1.7fr 1fr; gap: 14px; }
+    .intro-photos img { width: 100%; height: 100%; aspect-ratio: auto; min-height: 420px; object-fit: cover; border-radius: 4px; }
+
+    /* ── Speisekarte ── */
+    .menu { background: var(--paper); border-block: 1px solid var(--rule); }
+    .menu-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; }
+    .menu-head p { color: var(--ink-2); max-width: 46ch; margin-top: 14px;  text-wrap: pretty; }
+    .menu-cards { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+
+    /* ── Abend-Band ── */
+    .evening { position: relative; color: #fff; background: var(--night); overflow: hidden; }
+    .evening img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 42%; }
+    .evening::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,16,34,.86) 0%, rgba(10,16,34,.55) 45%, rgba(10,16,34,0) 75%); }
+    .evening .wrap { position: relative; z-index: 2; min-height: min(78vh, 640px); display: flex; flex-direction: column; justify-content: center; }
+    .evening h2 { max-width: 18ch; }
+    .evening p { margin-top: 18px; max-width: 38ch; color: rgba(255,255,255,.86); font-size: 1.12rem; }
+    .evening .btn { margin-top: 30px; align-self: flex-start; }
+
+    /* ── Galerie: Bildbetrachter zum Durchschauen ── */
+    .viewer { margin-top: 48px; }
+    .v-stage {
+      position: relative; background: var(--ink); border-radius: 4px; overflow: hidden;
+      aspect-ratio: 16 / 9;
+    }
+    .v-track {
+      display: flex; height: 100%; overflow-x: auto; overflow-y: hidden;
+      scroll-snap-type: x mandatory; scrollbar-width: none;
+      overscroll-behavior-x: contain;
+    }
+    .v-track::-webkit-scrollbar { display: none; }
+    .v-slide { flex: 0 0 100%; height: 100%; scroll-snap-align: center; position: relative; }
+    .v-slide button { display: block; width: 100%; height: 100%; border: 0; padding: 0; background: none; cursor: zoom-in; }
+    .v-slide img { width: 100%; height: 100%; object-fit: contain; }
+    .v-slide .v-fill { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(28px) brightness(.55); transform: scale(1.15); }
+    .v-slide button img { position: relative; }
+    .v-nav {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+      width: 52px; height: 52px; border-radius: 50%; border: 0; cursor: pointer;
+      display: grid; place-items: center; background: rgba(251,250,247,.92); color: var(--ink);
+      box-shadow: 0 6px 16px -8px rgba(20,12,8,.55); transition: background-color .2s, opacity .2s;
+    }
+    .v-nav:hover { background: #fff; }
+    .v-nav svg { width: 22px; height: 22px; }
+    .v-prev { left: 16px; } .v-next { right: 16px; }
+    .v-bar { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; margin-top: 16px; }
+    .v-cap { color: var(--ink-2); }
+    .v-count { font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .v-thumbs {
+      display: flex; gap: 10px; margin-top: 16px; overflow-x: auto; padding-bottom: 6px;
+      scroll-snap-type: x proximity; scrollbar-width: thin;
+    }
+    .v-thumbs button {
+      flex: 0 0 auto; width: 104px; height: 70px; padding: 0; border: 0; border-radius: 4px; overflow: hidden;
+      cursor: pointer; background: var(--wood-l); opacity: .55; outline-offset: 2px;
+      scroll-snap-align: start; transition: opacity .2s;
+    }
+    .v-thumbs button:hover { opacity: .85; }
+    .v-thumbs button[aria-current="true"] { opacity: 1; box-shadow: inset 0 0 0 3px var(--ink); }
+    .v-thumbs img { width: 100%; height: 100%; object-fit: cover; }
+    .v-thumbs button[aria-current="true"] img { padding: 3px; border-radius: 4px; }
+
+    dialog.lightbox {
+      margin: auto; border: 0; padding: 0; background: transparent;
+      max-width: min(92vw, 1400px); max-height: 90vh;
+    }
+    dialog.lightbox::backdrop { background: rgba(20,12,8,.9); }
+    dialog.lightbox img { max-width: min(92vw, 1400px); max-height: 82vh; width: auto; height: auto; border-radius: 4px; }
+    dialog.lightbox figcaption { color: rgba(255,255,255,.8); margin-top: 10px; text-align: center; }
+    .lb-close, .lb-nav {
+      position: fixed; z-index: 2; border: 0; cursor: pointer;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(255,255,255,.12); color: #fff;
+      display: grid; place-items: center;
+    }
+    .lb-close:hover, .lb-nav:hover { background: rgba(255,255,255,.24); }
+    .lb-close { top: 20px; right: 20px; }
+    .lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+    .lb-close svg, .lb-nav svg { width: 22px; height: 22px; }
+
+    /* ── Anfahrt & Kontakt ── */
+    .visit { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: start; }
+    .map { display: block; border-radius: 4px; overflow: hidden; cursor: zoom-in; }
+    .map img { width: 100%; height: auto; aspect-ratio: 670 / 300; object-fit: cover; object-position: top; transition: transform .8s var(--ease); }
+    .map:hover img { transform: scale(1.03); }
+    .map-cap { margin-top: 10px; color: var(--ink-2); font-size: .95rem; }
+    .visit h2 + p { margin-top: 18px; color: var(--ink-2); max-width: 44ch; }
+    .info { margin-top: 36px; display: grid; gap: 0; }
+    .info-row { display: grid; grid-template-columns: 9.5rem 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--rule); }
+    .info-row:last-child { border-bottom: 1px solid var(--rule); }
+    .info-row dt { font-weight: 600; }
+    .info-row dd { color: var(--ink-2); }
+    .info-row dd a { color: var(--ink); font-weight: 600; }
+    .visit .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+
+    /* ── Footer ── */
+    footer { background: var(--ink); color: rgba(251,250,247,.7); padding: 56px 0 40px; }
+    footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .foot-brand { display: flex; align-items: center; gap: 18px; }
+    .foot-brand .logo-chip { background: #fff; border-radius: 4px; padding: 6px 10px; }
+    .foot-brand img { height: 54px; width: auto; }
+    .foot-brand em { font-family: var(--serif); font-style: normal; color: var(--snow); font-size: 1.15rem; }
+    .foot-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; font-size: .95rem; }
+    .foot-links a { color: rgba(251,250,247,.7); text-decoration: none; }
+    .foot-links a:hover { color: #fff; text-decoration: underline; }
+    .foot-copy { width: 100%; font-size: .85rem; color: rgba(251,250,247,.5); padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); }
+
+    /* ── Mobile Reservierungsleiste ── */
+    .callbar { display: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: inline-flex; align-items: center; }
+      .nav .btn { margin-left: auto; }
+      .nav .wrap { gap: 12px; }
+      :root { --facts-h: 0px; }
+      .facts .wrap { grid-template-columns: 1fr; }
+      .fact, .fact + .fact { padding: 18px 0; border-left: 0; }
+      .fact + .fact { border-top: 1px solid rgba(255,255,255,.14); }
+      .intro, .visit { grid-template-columns: 1fr; }
+      .visit-photo { order: 2; }
+    }
+    @media (max-width: 720px) {
+      body { padding-bottom: 76px; }
+      :root { --nav-h: 64px; --facts-h: 0px; }
+      .nav-logo img { height: 38px; }
+      .nav .btn { display: none; }
+      .hero-actions { display: none; }
+      .menu-cards .btn { width: 100%; }
+      .menu-cards li { flex: 1 1 100%; }
+      .hero-body { padding-bottom: 104px; }
+      .intro-photos img { min-height: 260px; }
+      .v-stage { aspect-ratio: 4 / 5; }
+      .v-nav { width: 44px; height: 44px; }
+      .v-prev { left: 10px; } .v-next { right: 10px; }
+      .v-bar { flex-direction: column; gap: 4px; }
+      .v-thumbs button { width: 76px; height: 54px; }
+      .info-row { grid-template-columns: 1fr; gap: 2px; }
+      .evening::after { background: linear-gradient(to top, rgba(10,16,34,.9) 0%, rgba(10,16,34,.5) 60%, rgba(10,16,34,.2) 100%); }
+      .evening .wrap { justify-content: flex-end; padding-block: 56px; min-height: 560px; }
+      .lb-prev, .lb-next { top: auto; bottom: 20px; transform: none; }
+      .callbar {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+        position: fixed; inset: auto 0 0 0; z-index: 60;
+        padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(251,250,247,.97);
+        box-shadow: 0 -1px 0 var(--rule), 0 -8px 24px -12px rgba(42,26,18,.3);
+      }
+      .callbar .btn { min-height: 54px; padding: 0 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-img { animation: none; }
+      .v-track { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a href="#top" class="nav-logo" aria-label="W1 Ski Lounge – zum Seitenanfang">
+        <img src="img/logo.jpg" alt="W1 Ski Lounge" width="400" height="400" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#huette">Die Hütte</a></li>
+        <li><a href="#speisekarte">Speisekarte</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#anfahrt">Anfahrt &amp; Kontakt</a></li>
+      </ul>
+      <a href="tel:+436642204477" class="btn btn-red">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        Tisch reservieren
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">Menü</button>
+    </div>
+  <div class="nav-panel" id="nav-panel" hidden>
+    <ul>
+      <li><a href="#huette">Die Hütte</a></li>
+      <li><a href="#speisekarte">Speisekarte</a></li>
+      <li><a href="speisekarte.pdf" data-karte="speisekarte" target="_blank" rel="noopener">Speisekarte als PDF</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#anfahrt">Anfahrt &amp; Kontakt</a></li>
+    </ul>
+  </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Willkommen">
+      <img class="hero-img" src="img/huette-piste.jpg" alt="Die W1 Ski Lounge im Schnee: Holzhütte mit voller Sonnenterrasse direkt an der Piste, dahinter verschneite Berge" width="2000" height="1000" fetchpriority="high" />
+      <div class="hero-body">
+        <div class="wrap">
+          <p class="status" id="status" aria-live="polite"><span class="dot"></span><span id="status-text">Wintersaison · täglich 10–17 Uhr</span></p>
+          <h1>W<span class="one">1</span> Ski Lounge</h1>
+          <p class="hero-claim">Die Hütte direkt an der Piste. In ist, wer drin isst.</p>
+          <div class="hero-actions">
+            <a href="tel:+436642204477" class="btn btn-red">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+              Anrufen &amp; reservieren
+            </a>
+            <a href="https://wa.me/436642204477" class="btn btn-light" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fakten -->
+    <div class="facts">
+      <div class="wrap">
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div><strong>Täglich 10–17 Uhr</strong><span>in der Wintersaison</span></div>
+        </div>
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 20 6-11 4 6 3-4 5 9z"/><path d="M8.2 10.5 9 9l1.2 1.8"/></svg>
+          <div><strong>Direkt an der Piste</strong><span>Ehrwalder Wettersteinbahnen, Tirol</span></div>
+        </div>
+        <div class="fact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          <div><strong>Reservierung</strong><a href="tel:+436642204477">+43 664 2204477</a></div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Die Hütte -->
+    <section class="block" id="huette">
+      <div class="wrap intro">
+        <div class="intro-text">
+          <h2>Ski ab, Sonne an.</h2>
+          <p>Die W1 Ski Lounge liegt direkt an der Piste der Ehrwalder Wettersteinbahnen. Du schwingst ab, stellst die Ski in den Ständer und sitzt schon auf der Terrasse – mit Blick auf die Berge.</p>
+          <p>Aus unserer Bergkuchl kommen unter anderem Schweinsripperl und Hendl vom Grill – was es sonst noch gibt, steht in der Speisekarte. Drinnen wartet die gemütliche Stube aus hellem Holz, wenn es draußen schneit.</p>
+        </div>
+        <div class="intro-photos">
+          <img src="img/tag.jpg" alt="Gäste auf der Sonnenterrasse der W1 Ski Lounge, im Hintergrund die Felswände des Wettersteingebirges" loading="lazy" width="1052" height="696" />
+          <img src="img/adler.jpg" alt="Die Bar der W1 Ski Lounge mit Holzdecke und Steinadler" loading="lazy" width="670" height="1191" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Speisekarte -->
+    <section class="block menu" id="speisekarte">
+      <div class="wrap">
+        <div class="menu-head">
+          <div>
+            <h2>Essen &amp; Trinken</h2>
+            <p>Unsere aktuellen Karten zum Anschauen und Herunterladen.</p>
+          </div>
+        </div>
+        <ul class="menu-cards">
+          <li>
+            <a href="speisekarte.pdf" data-karte="speisekarte" class="btn btn-line" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
+              Speisekarte (PDF)
+            </a>
+          </li>
+          <li>
+            <a href="getraenkekarte.pdf" data-karte="getraenkekarte" class="btn btn-line" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
+              Getränkekarte (PDF)
+            </a>
+          </li>
+          <li>
+            <a href="allergenkarte.pdf" data-karte="allergenkarte" class="btn btn-line" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
+              Allergenkarte (PDF)
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Abend -->
+    <section class="evening" aria-labelledby="abend-title">
+      <img src="img/nacht-zufahrt.jpg" alt="Die beleuchtete W1 Ski Lounge am Abend, davor die frisch präparierte Piste" loading="lazy" width="2000" height="1500" />
+      <div class="wrap">
+        <h2 id="abend-title">Dienstag &amp; Mittwoch: Nachtskilauf</h2>
+        <p>Ab 18:30 Uhr gibt es bei uns Schweinsripperl und Hendl – genau das Richtige nach den Abfahrten unter Flutlicht.</p>
+        <a href="tel:+436642204477" class="btn btn-light">Tisch für den Abend reservieren</a>
+      </div>
+    </section>
+
+    <!-- Galerie -->
+    <section class="block" id="galerie">
+      <div class="wrap">
+        <h2>Eindrücke</h2>
+        <div class="viewer" id="viewer" role="region" aria-roledescription="Bildergalerie" aria-label="Eindrücke von der W1 Ski Lounge">
+          <div class="v-stage">
+            <div class="v-track" id="v-track" tabindex="0" aria-live="polite">
+              <figure class="v-slide"><img class="v-fill" src="img/nacht-ehrwalder-moos.jpg" alt="" aria-hidden="true" loading="lazy" /><button type="button" aria-label="Bild vergrößern"><img src="img/nacht-ehrwalder-moos.jpg" alt="Die beleuchtete Piste beim Nachtskilauf, gesehen vom Ehrwalder Moos" loading="lazy" /></button></figure>
+              <figure class="v-slide"><img class="v-fill" src="img/nacht-sterne.jpg" alt="" aria-hidden="true" loading="lazy" /><button type="button" aria-label="Bild vergrößern"><img src="img/nacht-sterne.jpg" alt="Sternenhimmel über dem Wettersteingebirge, vorne das W1-Glashaus" loading="lazy" /></button></figure>
+              <figure class="v-slide"><img class="v-fill" src="img/nacht-skistaender.jpg" alt="" aria-hidden="true" loading="lazy" /><button type="button" aria-label="Bild vergrößern"><img src="img/nacht-skistaender.jpg" alt="Volle Skiständer und das beleuchtete W1-Glashaus am Abend" loading="lazy" /></button></figure>
+              <figure class="v-slide"><img class="v-fill" src="img/nacht-lift.jpg" alt="" aria-hidden="true" loading="lazy" /><button type="button" aria-label="Bild vergrößern"><img src="img/nacht-lift.jpg" alt="Mit dem Lift der Wettersteinbahnen über die beleuchtete Piste" loading="lazy" /></button></figure>
+              <figure class="v-slide"><img class="v-fill" src="img/nacht-pistenraupe.jpg" alt="" aria-hidden="true" loading="lazy" /><button type="button" aria-label="Bild vergrößern"><img src="img/nacht-pistenraupe.jpg" alt="Pistenraupen präparieren am Abend die Piste vor der Hütte" loading="lazy" /></button></figure>
+              <figure class="v-slide"><img class="v-fill" src="img/abend.jpg" alt="" aria-hidden="true" loading="lazy" /><button type="button" aria-label="Bild vergrößern"><img src="img/abend.jpg" alt="Die beleuchtete Hütte zur blauen Stunde vor den Felswänden" loading="lazy" /></button></figure>
+              <figure class="v-slide"><img class="v-fill" src="img/abend2.jpg" alt="" aria-hidden="true" loading="lazy" /><button type="button" aria-label="Bild vergrößern"><img src="img/abend2.jpg" alt="Die Hütte zur blauen Stunde mit Tiroler Flagge" loading="lazy" /></button></figure>
+              <figure class="v-slide"><img class="v-fill" src="img/frost.jpg" alt="" aria-hidden="true" loading="lazy" /><button type="button" aria-label="Bild vergrößern"><img src="img/frost.jpg" alt="Frisch verschneite Terrasse mit Tiroler Flagge und W1-Schild" loading="lazy" /></button></figure>
+              <figure class="v-slide"><img class="v-fill" src="img/schneefraese.jpg" alt="" aria-hidden="true" loading="lazy" /><button type="button" aria-label="Bild vergrößern"><img src="img/schneefraese.jpg" alt="Neuschnee: die Terrasse wird freigefräst" loading="lazy" /></button></figure>
+              <figure class="v-slide"><img class="v-fill" src="img/liegen.jpg" alt="" aria-hidden="true" loading="lazy" /><button type="button" aria-label="Bild vergrößern"><img src="img/liegen.jpg" alt="Liegestühle vor verschneiten Bergen in der Wintersonne" loading="lazy" /></button></figure>
+            </div>
+            <button class="v-nav v-prev" type="button" aria-label="Vorheriges Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button class="v-nav v-next" type="button" aria-label="Nächstes Bild"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+          <div class="v-bar"><p class="v-cap" id="v-cap"></p><p class="v-count" id="v-count"></p></div>
+          <div class="v-thumbs" id="v-thumbs" aria-label="Bildauswahl"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Anfahrt & Kontakt -->
+    <section class="block" id="anfahrt" style="padding-top: 0;">
+      <div class="wrap visit">
+        <div class="visit-photo">
+          <a class="map" href="img/lageplan.webp" target="_blank" rel="noopener">
+            <img src="img/lageplan.webp" alt="Lageplan: Pistenpanorama der Ehrwalder Wettersteinbahnen unter der Zugspitze, ein Pfeil markiert die Lage der W1 Ski Lounge an der Piste" loading="lazy" width="670" height="606" />
+          </a>
+          <p class="map-cap">Lageplan – der Pfeil zeigt die W1 Ski Lounge. Antippen zum Vergrößern.</p>
+        </div>
+        <div>
+          <h2>So findest du uns</h2>
+          <p>Die Hütte liegt direkt an der Piste im Skigebiet der Ehrwalder Wettersteinbahnen. Für einen Tisch ruf einfach an oder schreib uns auf WhatsApp.</p>
+          <dl class="info">
+            <div class="info-row"><dt>Öffnungszeiten</dt><dd>In der Wintersaison täglich, 10–17 Uhr</dd></div>
+            <div class="info-row"><dt>Lage</dt><dd>Skigebiet Ehrwalder Wettersteinbahnen, Ehrwald, Tirol</dd></div>
+            <div class="info-row"><dt>Ansprechpartner</dt><dd>Hermann Schmid</dd></div>
+            <div class="info-row"><dt>Telefon</dt><dd><a href="tel:+436642204477">+43 664 2204477</a></dd></div>
+            <div class="info-row"><dt>E-Mail</dt><dd><a href="mailto:w1-skilounge@aon.at">w1-skilounge@aon.at</a></dd></div>
+          </dl>
+          <div class="actions">
+            <a href="tel:+436642204477" class="btn btn-red">Anrufen</a>
+            <a href="https://wa.me/436642204477" class="btn btn-line" target="_blank" rel="noopener">WhatsApp schreiben</a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=W1+Ski+Lounge+Ehrwald" class="btn btn-line" target="_blank" rel="noopener">Route planen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-brand">
+        <span class="logo-chip"><img src="img/logo.jpg" alt="W1 Ski Lounge" /></span>
+        <em>In ist, wer drin isst.</em>
+      </div>
+      <ul class="foot-links">
+        <li><a href="#huette">Die Hütte</a></li>
+        <li><a href="#speisekarte">Speisekarte</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#anfahrt">Anfahrt &amp; Kontakt</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+      <p class="foot-copy">© <span id="year">2026</span> W1 Ski Lounge · Ehrwald, Tirol</p>
+    </div>
+  </footer>
+
+  <!-- Mobile: Reservierung immer einen Tipp entfernt -->
+  <nav class="callbar" aria-label="Reservieren">
+    <a href="tel:+436642204477" class="btn btn-red">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+      Anrufen
+    </a>
+    <a href="https://wa.me/436642204477" class="btn btn-line" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg>
+      WhatsApp
+    </a>
+  </nav>
+
+  <!-- Lightbox -->
+  <dialog class="lightbox" id="lightbox" aria-label="Bild vergrößert">
+    <button class="lb-close" type="button" aria-label="Schließen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <button class="lb-nav lb-prev" type="button" aria-label="Vorheriges Bild">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <button class="lb-nav lb-next" type="button" aria-label="Nächstes Bild">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+    <figure id="lb-fig"><figcaption id="lb-cap"></figcaption></figure>
+  </dialog>
+
+  <script>
+    // Live-Status: in der Wintersaison täglich 10–17 Uhr (Zeitzone Tirol)
+    // Saisondaten eintragen, z. B. { start: "2026-12-05", end: "2027-04-06" }.
+    // Solange keine Daten eingetragen sind, zeigt die Seite keinen Live-Status.
+    const SAISON = null;
+    (function () {
+      const el = document.getElementById('status');
+      const txt = document.getElementById('status-text');
+      function update() {
+        const today = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Vienna" }).format(new Date());
+        if (!SAISON) { el.classList.remove("open"); txt.textContent = "Wintersaison · täglich 10–17 Uhr"; return; }
+        if (today < SAISON.start || today > SAISON.end) { el.classList.remove("open"); txt.textContent = "Außerhalb der Saison · wir freuen uns auf den Winter"; return; }
+        const parts = new Intl.DateTimeFormat('de-AT', { timeZone: 'Europe/Vienna', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date());
+        const h = +parts.find(p => p.type === 'hour').value;
+        const m = +parts.find(p => p.type === 'minute').value;
+        const mins = h * 60 + m;
+        const wd = new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Vienna", weekday: "short" }).format(new Date());
+        const night = wd === "Tue" || wd === "Wed";
+        const open = mins >= 600 && mins < 1020;
+        el.classList.toggle("open", open);
+        if (mins >= 600 && mins < 1020) txt.textContent = "Jetzt geöffnet · bis 17 Uhr";
+        else if (mins < 600) txt.textContent = "Heute ab 10 Uhr geöffnet";
+        else if (night) txt.textContent = "Heute Nachtskilauf ab 18:30 Uhr";
+        else txt.textContent = "Geschlossen · morgen ab 10 Uhr";
+      }
+      update();
+      setInterval(update, 60000);
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+
+    // Navigation wird beim Scrollen hell
+    (function () {
+      const nav = document.getElementById("nav");
+      const onScroll = () => nav.classList.toggle("solid", window.scrollY > 40);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    // Mobiles Menü
+    (function () {
+      const btn = document.querySelector(".nav-toggle");
+      const panel = document.getElementById("nav-panel");
+      const nav = document.getElementById("nav");
+      function set(open) {
+        panel.hidden = !open;
+        btn.setAttribute("aria-expanded", open);
+        btn.textContent = open ? "Schließen" : "Menü";
+        nav.classList.toggle("menu-open", open);
+      }
+      btn.addEventListener("click", () => set(panel.hidden));
+      panel.addEventListener("click", e => { if (e.target.closest("a")) set(false); });
+      document.addEventListener("keydown", e => { if (e.key === "Escape") set(false); });
+    })();
+
+    // Inhalte aus dem Admin-Bereich (Decap CMS): content/galerie.json und content/karten.json.
+    // Fehlen die Dateien, bleiben die Bilder und Links im HTML als Rückfall stehen.
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const loadJSON = url => fetch(url, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null);
+
+    loadJSON('content/karten.json').then(k => {
+      if (!k) return;
+      document.querySelectorAll('[data-karte]').forEach(a => {
+        const v = k[a.dataset.karte];
+        if (v) a.setAttribute('href', String(v).replace(/^\//, ''));
+      });
+    });
+
+    loadJSON('content/galerie.json').then(g => {
+      const list = g && Array.isArray(g.bilder) ? g.bilder.filter(b => b && b.bild) : [];
+      if (list.length) {
+        document.getElementById('v-track').innerHTML = list.map(b => {
+          const src = esc(String(b.bild).replace(/^\//, ''));
+          return '<figure class="v-slide"><img class="v-fill" src="' + src + '" alt="" aria-hidden="true" loading="lazy" />' +
+            '<button type="button" aria-label="Bild vergrößern"><img src="' + src + '" alt="' + esc(b.text) + '" loading="lazy" /></button></figure>';
+        }).join('');
+      }
+      initViewer();
+    });
+
+    // Galerie: Bildbetrachter mit Wischen, Pfeilen, Vorschaubildern und Vergrößern
+    function initViewer() {
+      const track = document.getElementById('v-track');
+      const slides = [...track.querySelectorAll('.v-slide')];
+      const pics = slides.map(s => s.querySelector('button img'));
+      const cap = document.getElementById('v-cap');
+      const count = document.getElementById('v-count');
+      const thumbs = document.getElementById('v-thumbs');
+      const viewer = document.getElementById('viewer');
+      const smooth = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+      let cur = 0;
+      const tbtns = pics.map((p, n) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('aria-label', 'Bild ' + (n + 1) + ': ' + p.alt);
+        const t = new Image();
+        t.src = p.getAttribute('src'); t.alt = ''; t.loading = 'lazy';
+        b.append(t);
+        b.addEventListener('click', () => go(n));
+        thumbs.append(b);
+        return b;
+      });
+      function mark(n) {
+        cur = n;
+        cap.textContent = pics[n].alt;
+        count.textContent = (n + 1) + ' / ' + pics.length;
+        tbtns.forEach((b, k) => b.setAttribute('aria-current', k === n ? 'true' : 'false'));
+        const tb = tbtns[n];
+        thumbs.scrollTo({ left: tb.offsetLeft - thumbs.clientWidth / 2 + tb.clientWidth / 2, behavior: smooth() });
+      }
+      function go(n) {
+        n = (n + pics.length) % pics.length;
+        target = n;
+        clearTimeout(go.t); go.t = setTimeout(() => { target = -1; }, 1200);
+        track.scrollTo({ left: slides[n].offsetLeft, behavior: smooth() });
+        mark(n);
+      }
+      // Welches Bild gerade sichtbar ist (Wischen, Trackpad, Tastatur)
+      let target = -1;
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const n = slides.indexOf(e.target);
+          if (target !== -1 && n !== target) return;   // während eines Sprungs Zwischenbilder ignorieren
+          target = -1;
+          if (n !== cur) mark(n);
+        });
+      }, { root: track, threshold: 0.6 });
+      slides.forEach(s => io.observe(s));
+      // Rückfall, falls der Observer ausbleibt: nach dem Scrollen nachrechnen
+      let st;
+      track.addEventListener('scroll', () => {
+        clearTimeout(st);
+        st = setTimeout(() => {
+          if (target !== -1) return;
+          const n = Math.round(track.scrollLeft / track.clientWidth);
+          if (n !== cur) mark(n);
+        }, 150);
+      }, { passive: true });
+      viewer.querySelector('.v-prev').addEventListener('click', () => go(cur - 1));
+      viewer.querySelector('.v-next').addEventListener('click', () => go(cur + 1));
+      track.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
+      });
+      mark(0);
+
+      // Vergrößern (Lightbox), blättert durch dieselben Bilder
+      const dlg = document.getElementById('lightbox');
+      const img = new Image(); img.id = 'lb-img'; document.getElementById('lb-fig').prepend(img);
+      const lcap = document.getElementById('lb-cap');
+      let i = 0;
+      function show(n) {
+        i = (n + pics.length) % pics.length;
+        img.src = pics[i].src; img.alt = pics[i].alt; lcap.textContent = pics[i].alt;
+      }
+      slides.forEach((s, n) => s.querySelector('button').addEventListener('click', () => { show(n); dlg.showModal(); }));
+      dlg.addEventListener('close', () => go(i));
+      dlg.querySelector('.lb-close').addEventListener('click', () => dlg.close());
+      dlg.querySelector('.lb-prev').addEventListener('click', () => show(i - 1));
+      dlg.querySelector('.lb-next').addEventListener('click', () => show(i + 1));
+      dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+      dlg.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') show(i - 1);
+        if (e.key === 'ArrowRight') show(i + 1);
+      });
+    }
+  </script>
+</body>
+</html>

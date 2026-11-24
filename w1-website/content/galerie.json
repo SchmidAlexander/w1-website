@@ -1,0 +1,14 @@
+{
+  "bilder": [
+    { "bild": "img/nacht-ehrwalder-moos.jpg", "text": "Die beleuchtete Piste beim Nachtskilauf, gesehen vom Ehrwalder Moos" },
+    { "bild": "img/nacht-sterne.jpg", "text": "Sternenhimmel über dem Wettersteingebirge, vorne das W1-Glashaus" },
+    { "bild": "img/nacht-skistaender.jpg", "text": "Volle Skiständer und das beleuchtete W1-Glashaus am Abend" },
+    { "bild": "img/nacht-lift.jpg", "text": "Mit dem Lift der Wettersteinbahnen über die beleuchtete Piste" },
+    { "bild": "img/nacht-pistenraupe.jpg", "text": "Pistenraupen präparieren am Abend die Piste vor der Hütte" },
+    { "bild": "img/abend.jpg", "text": "Die beleuchtete Hütte zur blauen Stunde vor den Felswänden" },
+    { "bild": "img/abend2.jpg", "text": "Die Hütte zur blauen Stunde mit Tiroler Flagge" },
+    { "bild": "img/frost.jpg", "text": "Frisch verschneite Terrasse mit Tiroler Flagge und W1-Schild" },
+    { "bild": "img/schneefraese.jpg", "text": "Neuschnee: die Terrasse wird freigefräst" },
+    { "bild": "img/liegen.jpg", "text": "Liegestühle vor verschneiten Bergen in der Wintersonne" }
+  ]
+}
