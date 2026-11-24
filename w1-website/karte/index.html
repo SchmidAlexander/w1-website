@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speisekarte – W1 Ski Lounge</title>
+  <meta name="description" content="Speisekarte, Getränkekarte und Allergenkarte der W1 Ski Lounge." />
+  <meta name="theme-color" content="#2a1a12" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --snow: #fbfaf7; --paper: #ffffff; --ink: #2a1a12; --ink-2: #5e4a3e;
+      --wood: #b9773f; --wood-l: #ead9c6; --rule: #e4d9ce; --red: #b3261e; --red-d: #8e1c16;
+    }
+    body {
+      font-family: 'Figtree', system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.6;
+      color: var(--ink); background: var(--snow); -webkit-font-smoothing: antialiased;
+      min-height: 100svh; display: flex; flex-direction: column;
+    }
+    ::selection { background: var(--wood-l); }
+    :focus-visible { outline: 3px solid var(--wood); outline-offset: 3px; border-radius: 2px; }
+    main { width: 100%; max-width: 480px; margin: 0 auto; padding: 32px 20px 40px; flex: 1; }
+    .logo { display: inline-block; background: #fff; border-radius: 4px; padding: 6px 10px; }
+    .logo img { display: block; height: 64px; width: auto; }
+    h1 { font-family: 'Young Serif', Georgia, serif; font-weight: 400; font-size: 2.4rem; line-height: 1.08; margin-top: 28px; }
+    .lead { color: var(--ink-2); margin-top: 10px; }
+    ul { list-style: none; display: grid; gap: 12px; margin-top: 32px; }
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      min-height: 64px; padding: 0 20px; border-radius: 4px; text-decoration: none;
+      font: 600 1.15rem/1 'Figtree', system-ui, sans-serif;
+      transition: background-color .2s, color .2s;
+    }
+    .btn svg { width: 24px; height: 24px; flex-shrink: 0; }
+    .btn-main { background: var(--ink); color: var(--snow); }
+    .btn-main:hover { background: #1a0f0a; }
+    .btn-line { border: 1.5px solid var(--ink); color: var(--ink); background: var(--paper); }
+    .btn-line:hover { background: var(--ink); color: var(--snow); }
+    .call { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--rule); color: var(--ink-2); }
+    .call a { color: var(--ink); font-weight: 600; text-underline-offset: .22em; }
+    footer { text-align: center; padding: 0 20px 28px; font-size: .95rem; }
+    footer a { color: var(--ink-2); text-underline-offset: .22em; }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="logo" href="/" aria-label="Zur Startseite der W1 Ski Lounge"><img src="/img/logo.jpg" alt="W1 Ski Lounge" width="400" height="400" /></a>
+    <h1>Unsere Karten</h1>
+    <p class="lead">Schön, dass du da bist. Tippe auf eine Karte, um sie zu öffnen.</p>
+    <ul>
+      <li><a class="btn btn-main" data-karte="speisekarte" href="/speisekarte.pdf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
+        Speisekarte</a></li>
+      <li><a class="btn btn-line" data-karte="getraenkekarte" href="/getraenkekarte.pdf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
+        Getränkekarte</a></li>
+      <li><a class="btn btn-line" data-karte="allergenkarte" href="/allergenkarte.pdf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
+        Allergene</a></li>
+    </ul>
+    <p class="call">Für eine Reservierung: <a href="tel:+436642204477">+43 664 2204477</a></p>
+  </main>
+  <footer><a href="/">Zur Webseite der W1 Ski Lounge</a></footer>
+  <script>
+    // Immer die aktuellen Karten aus dem Admin-Bereich (content/karten.json)
+    fetch('/content/karten.json', { cache: 'no-cache' })
+      .then(r => r.ok ? r.json() : null)
+      .then(k => {
+        if (!k) return;
+        document.querySelectorAll('[data-karte]').forEach(a => {
+          const v = k[a.dataset.karte];
+          if (v) a.setAttribute('href', '/' + String(v).replace(/^\//, ''));
+        });
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>
