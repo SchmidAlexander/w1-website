@@ -1,0 +1,69 @@
+# Verwaltung der W1-Webseite mit Decap CMS (erreichbar unter /admin)
+backend:
+  name: github
+  repo: SchmidAlexander/w1-website
+  branch: main
+  commit_messages:
+    update: "Inhalt geändert: {{slug}}"
+    uploadMedia: "Datei hochgeladen: {{path}}"
+    deleteMedia: "Datei gelöscht: {{path}}"
+
+locale: de
+site_url: https://w1-ehrwald.at
+display_url: https://w1-ehrwald.at
+logo_url: /img/logo.jpg
+
+# Die Webseite liegt im Repository im Unterordner w1-website (Netlify: Publish directory = w1-website)
+# Neue Fotos landen hier
+media_folder: w1-website/img/uploads
+public_folder: /img/uploads
+
+collections:
+  - name: inhalte
+    label: Inhalte der Webseite
+    editor:
+      preview: false
+    files:
+      - name: galerie
+        label: Eindrücke (Bildergalerie)
+        file: w1-website/content/galerie.json
+        fields:
+          - label: Bilder
+            name: bilder
+            label_singular: Bild
+            widget: list
+            summary: "{{fields.text}}"
+            hint: Reihenfolge per Ziehen ändern. Das erste Bild wird zuerst gezeigt.
+            fields:
+              - label: Foto
+                name: bild
+                widget: image
+                choose_url: false
+                hint: Am besten JPG, höchstens ca. 2 MB.
+              - label: Bildunterschrift
+                name: text
+                widget: string
+                hint: Kurz beschreiben, was zu sehen ist. Wird unter dem Bild angezeigt und für blinde Besucher vorgelesen.
+
+      - name: karten
+        label: Speise-, Getränke- & Allergenkarte
+        file: w1-website/content/karten.json
+        fields:
+          - label: Speisekarte (PDF)
+            name: speisekarte
+            widget: file
+            choose_url: false
+            media_folder: /w1-website/karten
+            public_folder: /karten
+          - label: Getränkekarte (PDF)
+            name: getraenkekarte
+            widget: file
+            choose_url: false
+            media_folder: /w1-website/karten
+            public_folder: /karten
+          - label: Allergenkarte (PDF)
+            name: allergenkarte
+            widget: file
+            choose_url: false
+            media_folder: /w1-website/karten
+            public_folder: /karten
