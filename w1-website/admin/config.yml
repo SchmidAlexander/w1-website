@@ -13,8 +13,9 @@ site_url: https://w1-ehrwald.at
 display_url: https://w1-ehrwald.at
 logo_url: /img/logo.jpg
 
+# Die Webseite liegt im Repository im Unterordner w1-website (Netlify: Publish directory = w1-website)
 # Neue Fotos landen hier
-media_folder: img/uploads
+media_folder: w1-website/img/uploads
 public_folder: /img/uploads
 
 collections:
@@ -25,7 +26,7 @@ collections:
     files:
       - name: galerie
         label: Eindrücke (Bildergalerie)
-        file: content/galerie.json
+        file: w1-website/content/galerie.json
         fields:
           - label: Bilder
             name: bilder
@@ -46,23 +47,23 @@ collections:
 
       - name: karten
         label: Speise-, Getränke- & Allergenkarte
-        file: content/karten.json
+        file: w1-website/content/karten.json
         fields:
           - label: Speisekarte (PDF)
             name: speisekarte
             widget: file
             choose_url: false
-            media_folder: /karten
+            media_folder: /w1-website/karten
             public_folder: /karten
           - label: Getränkekarte (PDF)
             name: getraenkekarte
             widget: file
             choose_url: false
-            media_folder: /karten
+            media_folder: /w1-website/karten
             public_folder: /karten
           - label: Allergenkarte (PDF)
             name: allergenkarte
             widget: file
             choose_url: false
-            media_folder: /karten
+            media_folder: /w1-website/karten
             public_folder: /karten
