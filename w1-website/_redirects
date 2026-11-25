@@ -1,0 +1,25 @@
+# Alte Adressen der Jimdo-Seite -> neue Seite (Netlify, dauerhafte Weiterleitung 301)
+/speisekarte             /karte/            301
+/speisekarte-herbst      /karte/            301
+/%C3%B6ffnungszeiten     /#anfahrt          301
+/öffnungszeiten          /#anfahrt          301
+/kontakt                 /#anfahrt          301
+/lageplan                /#anfahrt          301
+/firmen-privatfeier      /#anfahrt          301
+/%C3%BCber-uns           /#huette           301
+/über-uns                /#huette           301
+/about                   /#huette           301
+/bilder                  /#galerie          301
+/instagram               /#galerie          301
+/impressum               /impressum.html    301
+/j/privacy               /datenschutz.html  301
+/j/cookies/policy        /datenschutz.html  301
+/aktuell-events          /                  301
+/news                    /                  301
+/news/*                  /                  301
+/silvester               /                  301
+/g%C3%A4stebuch          /                  301
+/gästebuch               /                  301
+/sitemap                 /                  301
+/app/*                   /                  301
+/j/*                     /                  301
