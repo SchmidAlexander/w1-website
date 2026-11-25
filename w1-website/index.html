@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>W1 Ski Lounge – die Hütte an der Piste</title>
-  <link rel="stylesheet" href="fonts.css" />
   <meta name="description" content="W1 Ski Lounge an den Ehrwalder Wettersteinbahnen: Tiroler Hüttenküche direkt an der Piste. In der Wintersaison täglich 10–17 Uhr. Reservierung unter +43 664 2204477." />
   <meta name="theme-color" content="#2a1a12" />
   <link rel="canonical" href="https://w1-ehrwald.at/" />
@@ -14,6 +13,10 @@
   <meta property="og:description" content="Tiroler Hüttenküche direkt an der Piste der Ehrwalder Wettersteinbahnen. Reservierung: +43 664 2204477." />
   <meta property="og:image" content="https://w1-ehrwald.at/img/huette-piste.jpg" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&amp;text=1&amp;display=swap" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -92,7 +95,7 @@
     }
     .nav .wrap { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
     .nav-logo { display: flex; align-items: center; background: #fff; border-radius: 4px; padding: 4px 8px; }
-    .nav-logo img { height: 46px; width: auto; }
+    .nav-logo img { height: 48px; width: auto; }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       color: #fff; text-decoration: none; font-weight: 500; font-size: .98rem;
@@ -146,6 +149,8 @@
     .status .dot { width: 10px; height: 10px; border-radius: 50%; background: #9aa3ab; }
     .status.open .dot { background: #4ad07a; box-shadow: 0 0 0 4px rgba(74,208,122,.25); }
     .hero h1 { font-size: clamp(3.2rem, 9.5vw, 6rem); letter-spacing: -0.02em; max-width: 11ch; }
+    .hero-logo { display: block; width: fit-content; background: rgba(255,255,255,.94); border-radius: 6px; padding: clamp(12px, 2vw, 20px) clamp(16px, 2.6vw, 28px); box-shadow: 0 18px 40px -20px rgba(0,0,0,.55); }
+    .hero-logo img { display: block; width: clamp(220px, 34vw, 400px); height: auto; }
     .hero-claim { font-size: clamp(1.15rem, 2.2vw, 1.5rem); margin-top: 14px; color: rgba(255,255,255,.9); max-width: 34ch; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 
@@ -182,6 +187,24 @@
     .evening h2 { max-width: 18ch; }
     .evening p { margin-top: 18px; max-width: 38ch; color: rgba(255,255,255,.86); font-size: 1.12rem; }
     .evening .btn { margin-top: 30px; align-self: flex-start; }
+
+    /* ── Soft Opening ── */
+    .opening { background: var(--wood-l, #ead9c6); padding: clamp(56px, 8vw, 96px) 0; }
+    .opening .wrap { display: grid; grid-template-columns: 1.3fr .7fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+    .opening-kicker { font-weight: 600; color: var(--ink-2); margin-bottom: 10px; }
+    .opening h2 { max-width: 16ch; }
+    .opening-times { display: flex; flex-wrap: wrap; gap: 12px 40px; margin-top: 28px; }
+    .opening-times dt { font-size: .95rem; color: var(--ink-2); }
+    .opening-times dd { font-family: var(--serif); font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; }
+    .opening-note { margin-top: 24px; max-width: 44ch; font-size: 1.1rem; }
+    .opening-flyer { display: block; max-width: 340px; justify-self: end; transform: rotate(1.5deg); box-shadow: 0 24px 48px -24px rgba(42,26,18,.55); transition: transform .3s var(--ease); }
+    .opening-flyer:hover { transform: rotate(0); }
+    .opening-flyer img { display: block; width: 100%; height: auto; border-radius: 3px; }
+    .opening[hidden] { display: none; }
+    @media (max-width: 720px) {
+      .opening .wrap { grid-template-columns: 1fr; }
+      .opening-flyer { justify-self: start; max-width: 260px; }
+    }
 
     /* ── Galerie: Bildbetrachter zum Durchschauen ── */
     .viewer { margin-top: 48px; }
@@ -291,7 +314,7 @@
     @media (max-width: 720px) {
       body { padding-bottom: 76px; }
       :root { --nav-h: 64px; --facts-h: 0px; }
-      .nav-logo img { height: 38px; }
+      .nav-logo img { height: 40px; }
       .nav .btn { display: none; }
       .hero-actions { display: none; }
       .menu-cards .btn { width: 100%; }
@@ -329,7 +352,7 @@
   <header class="nav" id="nav">
     <div class="wrap">
       <a href="#top" class="nav-logo" aria-label="W1 Ski Lounge – zum Seitenanfang">
-        <img src="img/logo.jpg" alt="W1 Ski Lounge" width="400" height="400" />
+        <img src="img/logo-w1.webp" alt="W1 Ski Lounge" width="1200" height="728" />
       </a>
       <ul class="nav-links">
         <li><a href="#huette">Die Hütte</a></li>
@@ -362,8 +385,8 @@
       <div class="hero-body">
         <div class="wrap">
           <p class="status" id="status" aria-live="polite"><span class="dot"></span><span id="status-text">Wintersaison · täglich 10–17 Uhr</span></p>
-          <h1>W<span class="one">1</span> Ski Lounge</h1>
-          <p class="hero-claim">Die Hütte direkt an der Piste. In ist, wer drin isst.</p>
+          <h1 class="hero-logo"><img src="img/logo-w1.webp" alt="W1 Ski Lounge" width="1200" height="728" /></h1>
+          <p class="hero-claim">Die Hütte direkt an der Piste.</p>
           <div class="hero-actions">
             <a href="tel:+436642204477" class="btn btn-red">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
@@ -396,6 +419,24 @@
       </div>
     </div>
     </div>
+
+    <!-- Soft Opening (verschwindet ab dem Tag nach dem Datum in data-until automatisch) -->
+    <section class="opening" id="opening" aria-labelledby="opening-title" data-until="2026-12-12">
+      <div class="wrap">
+        <div class="opening-text">
+          <p class="opening-kicker">Saisonstart 2026</p>
+          <h2 id="opening-title">Soft Opening am Samstag, 12. Dezember</h2>
+          <dl class="opening-times">
+            <div><dt>Geöffnet</dt><dd>10 bis 16 Uhr</dd></div>
+            <div><dt>Warme Küche</dt><dd>11 bis 15 Uhr</dd></div>
+          </dl>
+          <p class="opening-note">Auch danach haben wir bis zur offiziellen Eröffnung am 18. Dezember geöffnet. Wir freuen uns auf euch!</p>
+        </div>
+        <a class="opening-flyer" href="img/soft-opening.webp" target="_blank" rel="noopener" aria-label="Flyer zum Soft Opening groß anzeigen">
+          <img src="img/soft-opening.webp" alt="Flyer: Soft Opening der W1 Ski Lounge am Samstag, 12.12.2026, geöffnet 10 bis 16 Uhr, warme Küche 11 bis 15 Uhr" width="1122" height="1402" loading="lazy" />
+        </a>
+      </div>
+    </section>
 
     <!-- Die Hütte -->
     <section class="block" id="huette">
@@ -448,7 +489,7 @@
     <section class="evening" aria-labelledby="abend-title">
       <img src="img/nacht-zufahrt.jpg" alt="Die beleuchtete W1 Ski Lounge am Abend, davor die frisch präparierte Piste" loading="lazy" width="2000" height="1500" />
       <div class="wrap">
-        <h2 id="abend-title">Dienstag &amp; Mittwoch: Nachtskilauf</h2>
+        <h2 id="abend-title">Dienstag &amp; Donnerstag: Nachtskilauf</h2>
         <p>Ab 18:30 Uhr gibt es bei uns Schweinsripperl und Hendl – genau das Richtige nach den Abfahrten unter Flutlicht.</p>
         <a href="tel:+436642204477" class="btn btn-light">Tisch für den Abend reservieren</a>
       </div>
@@ -514,8 +555,7 @@
   <footer>
     <div class="wrap">
       <div class="foot-brand">
-        <span class="logo-chip"><img src="img/logo.jpg" alt="W1 Ski Lounge" /></span>
-        <em>In ist, wer drin isst.</em>
+        <span class="logo-chip"><img src="img/logo-w1.webp" alt="W1 Ski Lounge" width="1200" height="728" /></span>
       </div>
       <ul class="foot-links">
         <li><a href="#huette">Die Hütte</a></li>
@@ -565,6 +605,9 @@
       const txt = document.getElementById('status-text');
       function update() {
         const today = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Vienna" }).format(new Date());
+        const op = document.getElementById("opening");
+        if (op && today > op.dataset.until) op.hidden = true;
+        if (today < "2026-12-12") { el.classList.remove("open"); txt.textContent = "Soft Opening am Sa, 12.12. · 10–16 Uhr"; return; }
         if (!SAISON) { el.classList.remove("open"); txt.textContent = "Wintersaison · täglich 10–17 Uhr"; return; }
         if (today < SAISON.start || today > SAISON.end) { el.classList.remove("open"); txt.textContent = "Außerhalb der Saison · wir freuen uns auf den Winter"; return; }
         const parts = new Intl.DateTimeFormat('de-AT', { timeZone: 'Europe/Vienna', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date());
@@ -572,7 +615,7 @@
         const m = +parts.find(p => p.type === 'minute').value;
         const mins = h * 60 + m;
         const wd = new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Vienna", weekday: "short" }).format(new Date());
-        const night = wd === "Tue" || wd === "Wed";
+        const night = wd === "Tue" || wd === "Thu";
         const open = mins >= 600 && mins < 1020;
         el.classList.toggle("open", open);
         if (mins >= 600 && mins < 1020) txt.textContent = "Jetzt geöffnet · bis 17 Uhr";
