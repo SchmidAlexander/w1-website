@@ -94,7 +94,9 @@
       transition: background-color .3s, box-shadow .3s;
     }
     .nav .wrap { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .nav-logo { display: flex; align-items: center; background: #fff; border-radius: 4px; padding: 4px 8px; }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { filter: drop-shadow(0 1px 2px rgba(0,0,0,.45)); }
+    .nav.solid .nav-logo img { filter: none; }
     .nav-logo img { height: 48px; width: auto; }
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
@@ -149,8 +151,8 @@
     .status .dot { width: 10px; height: 10px; border-radius: 50%; background: #9aa3ab; }
     .status.open .dot { background: #4ad07a; box-shadow: 0 0 0 4px rgba(74,208,122,.25); }
     .hero h1 { font-size: clamp(3.2rem, 9.5vw, 6rem); letter-spacing: -0.02em; max-width: 11ch; }
-    .hero-logo { display: block; width: fit-content; background: rgba(255,255,255,.94); border-radius: 6px; padding: clamp(12px, 2vw, 20px) clamp(16px, 2.6vw, 28px); box-shadow: 0 18px 40px -20px rgba(0,0,0,.55); }
-    .hero-logo img { display: block; width: clamp(220px, 34vw, 400px); height: auto; }
+    .hero-logo { display: block; width: fit-content; }
+    .hero-logo img { display: block; width: clamp(150px, 23vw, 267px); height: auto; filter: drop-shadow(0 2px 3px rgba(0,0,0,.5)) drop-shadow(0 8px 24px rgba(0,0,0,.35)); }
     .hero-claim { font-size: clamp(1.15rem, 2.2vw, 1.5rem); margin-top: 14px; color: rgba(255,255,255,.9); max-width: 34ch; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 
@@ -287,7 +289,7 @@
     footer { background: var(--ink); color: rgba(251,250,247,.7); padding: 56px 0 40px; }
     footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 28px; flex-wrap: wrap; }
     .foot-brand { display: flex; align-items: center; gap: 18px; }
-    .foot-brand .logo-chip { background: #fff; border-radius: 4px; padding: 6px 10px; }
+    .foot-brand .logo-chip { display: block; }
     .foot-brand img { height: 54px; width: auto; }
     .foot-brand em { font-family: var(--serif); font-style: normal; color: var(--snow); font-size: 1.15rem; }
     .foot-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; font-size: .95rem; }
