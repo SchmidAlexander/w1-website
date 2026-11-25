@@ -6,9 +6,7 @@
   <title>Speisekarte – W1 Ski Lounge</title>
   <meta name="description" content="Speisekarte, Getränkekarte und Allergenkarte der W1 Ski Lounge." />
   <meta name="theme-color" content="#2a1a12" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/fonts.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -39,6 +37,9 @@
     .btn-main:hover { background: #1a0f0a; }
     .btn-line { border: 1.5px solid var(--ink); color: var(--ink); background: var(--paper); }
     .btn-line:hover { background: var(--ink); color: var(--snow); }
+    .kitchen { display: flex; flex-wrap: wrap; gap: 8px 32px; margin-top: 24px; }
+    .kitchen dt { font-size: .9rem; color: var(--ink-2); }
+    .kitchen dd { font-family: 'Young Serif', Georgia, serif; font-size: 1.2rem; line-height: 1.25; }
     .call { margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--rule); color: var(--ink-2); }
     .call a { color: var(--ink); font-weight: 600; text-underline-offset: .22em; }
     footer { text-align: center; padding: 0 20px 28px; font-size: .95rem; }
@@ -61,6 +62,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
         Allergene</a></li>
     </ul>
+    <dl class="kitchen">
+      <div><dt>Warme Küche</dt><dd>täglich 11:30–16 Uhr</dd></div>
+      <div><dt>Beim Nachtskilauf</dt><dd>Di &amp; Do 18:30–20:30 Uhr</dd></div>
+    </dl>
     <p class="call">Für eine Reservierung: <a href="tel:+436642204477">+43 664 2204477</a></p>
   </main>
   <footer><a href="/">Zur Webseite der W1 Ski Lounge</a></footer>
